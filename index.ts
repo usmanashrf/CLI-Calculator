@@ -30,4 +30,4 @@ let answers = await inquirer.prompt([{
 ]);
 //console.log(typeof answers.num1,typeof answers.num2);
 let total = Result(answers.firstValue,answers.secondValue,answers.operation);
-console.log(total);
+console.log(total); 
