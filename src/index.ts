@@ -6,7 +6,8 @@ import Result from "./modules/Result.js";
 (async () => {
     await showBanner('Usman Cal', 'CLI Calculator','green');
 })();
-
+let repeat= true;
+while(repeat){
 let answers = await inquirer.prompt([{
     name: "firstValue",
     type: "number",
@@ -14,7 +15,7 @@ let answers = await inquirer.prompt([{
     {
         type: 'rawlist',
         name: 'operation',
-        message: 'What do you want to do?',
+        message: '',
         choices: [
           '+',
           '-',
@@ -29,5 +30,20 @@ let answers = await inquirer.prompt([{
         message: "Enter second value:"}
 ]);
 //console.log(typeof answers.num1,typeof answers.num2);
-let total = Result(answers.firstValue,answers.secondValue,answers.operation);
-console.log(total); 
+
+  let total = Result(answers.firstValue,answers.secondValue,answers.operation);
+  console.log(total); 
+
+  let rep = await inquirer.prompt([{
+    type: 'rawlist',
+    name: "repeat",
+    message: "Want to do more Operation:",
+    choices: [
+      'Yes',
+      'No'
+    ]}]);
+
+    if(rep.repeat === "No"){
+      repeat= false;
+    }
+}
