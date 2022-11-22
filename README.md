@@ -1,4 +1,3 @@
 # CLI-Calculator
-cmd command
-
+for installation use below cmd command
 npx usmcli_cal
