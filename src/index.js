@@ -1,9 +1,11 @@
-import showBanner from "node-banner";
+#!/usr/bin/env node
 import inquirer from "inquirer";
 import Result from "./modules/Result.js";
-(async () => {
-    await showBanner('Usman Cal', 'CLI Calculator', 'green');
-})();
+import Welcome from "./modules/Welcome.js";
+import Repeat from "./modules/Repeat.js";
+import SimpleRepeat from "./SimpleRepeat.js";
+import End from "./modules/End.js";
+await Welcome();
 let repeat = true;
 let history = [];
 while (repeat) {
@@ -30,20 +32,10 @@ while (repeat) {
             message: "Enter second value:"
         }
     ]);
-    //console.log(typeof answers.num1,typeof answers.num2);
     let total = Result(answers.firstValue, answers.secondValue, answers.operation);
     console.log(total);
     history.push(`${answers.firstValue} ${answers.operation} ${answers.secondValue} = ${total}`);
-    let rep = await inquirer.prompt([{
-            type: 'rawlist',
-            name: "repeat",
-            message: "Want to do more Operation:",
-            choices: [
-                'Yes',
-                'No',
-                'History'
-            ]
-        }]);
+    var rep = await Repeat();
     if (rep.repeat === "No") {
         repeat = false;
     }
@@ -59,9 +51,20 @@ while (repeat) {
             }]);
         if (hist.history === "Show") {
             history.forEach(x => console.log(x));
+            rep = await SimpleRepeat();
+            if (rep.repeat === "No") {
+                repeat = false;
+            }
         }
         if (hist.history === "Clear") {
             history.length = 0;
+            rep = await SimpleRepeat();
+            if (rep.repeat === "No") {
+                repeat = false;
+            }
         }
     }
+}
+if (repeat === false) {
+    End();
 }

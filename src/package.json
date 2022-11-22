@@ -1,5 +1,5 @@
 {
-  "name": "cli_calculator",
+  "name": "usmcli_cal",
   "version": "1.0.0",
   "description": "",
   "type": "module",
@@ -10,10 +10,20 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bin": "./index.js",
   "dependencies": {
+    "@types/chalk-animation": "^1.6.1",
+    "@types/figlet": "^1.5.5",
+    "@types/gradient-string": "^1.1.2",
+    "@types/node-emoji": "^1.8.2",
     "chalk": "^5.1.2",
+    "chalk-animation": "^2.0.3",
+    "figlet": "^1.5.2",
+    "gradient-string": "^2.0.2",
     "inquirer": "^9.1.4",
-    "node-banner": "^1.4.0"
+    "nanospinner": "^1.1.0",
+    "node-banner": "^1.4.0",
+    "node-emoji": "^1.11.0"
   },
   "devDependencies": {
     "@types/inquirer": "^9.0.3"
